@@ -1,6 +1,7 @@
 // pages/Description/Description.jsx
 import { useEffect, useMemo, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
+import "./Description.css";
 
 export default function Description({ setWatchList, watchList }) {
   const { imdbID } = useParams();
@@ -72,10 +73,10 @@ export default function Description({ setWatchList, watchList }) {
 
   return (
     <div>
-      <h1>Description for {imdbID}</h1>
 
       <h2>{movie.Title}</h2>
       {hasPoster && <img src={movie.Poster} alt={movie.Title} />}
+      <div className="data">
 
       {movie.Genre && <p>{movie.Genre}</p>}
 
@@ -98,6 +99,7 @@ export default function Description({ setWatchList, watchList }) {
       >
         {inWatchlist ? "In Watchlist ✓" : "Add to Watchlist"}
       </button>
+      </div>
     </div>
   );
 }

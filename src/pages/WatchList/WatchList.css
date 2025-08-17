@@ -122,3 +122,46 @@
   outline-offset: 4px;
   border-radius: 18px;
 }
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--bg);
+  border-bottom: 2px solid var(--ink);
+  z-index: 1000;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+body {
+  padding-top: 70px; 
+}
+
+.watchlist-title {
+  width: min(1100px, 92vw);
+  margin: 30px auto 10px;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--accent);
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 6px 14px;
+  background: var(--bar-yellow);
+  border-radius: 8px;
+  border: 2px solid var(--ink);
+  box-shadow:
+    0 4px 0 var(--ink),
+    0 6px 12px rgba(0,0,0,0.45);
+  width: fit-content;
+  margin: 8px auto;
+}

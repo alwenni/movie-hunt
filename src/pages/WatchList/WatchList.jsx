@@ -110,40 +110,43 @@ export default function WatchList({ watchlist = [], loading, error, setWatchList
   const validPoster = (p) => p && p !== "N/A";
 
   return (
-    <div className="watchlist">
-      {enrichError && <p className="error">{enrichError}</p>}
-      {enriching && <p className="muted">Fetching details…</p>}
+    <>
+      <h1 className="watchlist-title">🎬 My Watchlist</h1>
+      <div className="watchlist">
+        {enrichError && <p className="error">{enrichError}</p>}
+        {enriching && <p className="muted">Fetching details…</p>}
 
-      {displayList.map((movie, idx) => (
-        <div
-          className="watchlist-item"
-          key={movie.imdbID || `${movie.Title}-${movie.Year}-${idx}`}
-        >
-          {validPoster(movie.Poster) && <img src={movie.Poster} alt={movie.Title} />}
-
-          <p>
-            {movie.Title} {movie.Year ? `(${movie.Year})` : null}
-          </p>
-
-          <p>{movie.Genre || "—"}</p>
-
-          <p>
-            <strong>Rated:</strong> {movie.Rated || "—"} {" • "}
-            <strong>Runtime:</strong> {movie.Runtime || "—"}
-          </p>
-
-          <p>
-            <strong>IMDb Rating:</strong> {movie.imdbRating || "—"}
-          </p>
-
-          <button
-            type="button"
-            onClick={() => removeMovie(movie.imdbID || movie.Title)}
+        {displayList.map((movie, idx) => (
+          <div
+            className="watchlist-item"
+            key={movie.imdbID || `${movie.Title}-${movie.Year}-${idx}`}
           >
-            Remove
-          </button>
-        </div>
-      ))}
-    </div>
+            {validPoster(movie.Poster) && <img src={movie.Poster} alt={movie.Title} />}
+
+            <p>
+              {movie.Title} {movie.Year ? `(${movie.Year})` : null}
+            </p>
+
+            <p>{movie.Genre || "—"}</p>
+
+            <p>
+              <strong>Rated:</strong> {movie.Rated || "—"} {" • "}
+              <strong>Runtime:</strong> {movie.Runtime || "—"}
+            </p>
+
+            <p>
+              <strong>IMDb Rating:</strong> {movie.imdbRating || "—"}
+            </p>
+
+            <button
+              type="button"
+              onClick={() => removeMovie(movie.imdbID || movie.Title)}
+            >
+              Remove
+            </button>
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
