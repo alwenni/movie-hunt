@@ -1,30 +1,82 @@
 // pages/Description/Description.jsx
+import { useEffect, useMemo, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 
-export default function Description({ setWatchList, watchList, loading, error }) {
-  if (loading) return <p className="muted">Loading…</p>;
-  if (error) return <p className="error">{error}</p>;
-
-  const { imdbID } = useParams();                  // ✅ get id from URL
+export default function Description({ setWatchList, watchList }) {
+  const { imdbID } = useParams();
   const location = useLocation();
-  const movie = location.state?.movie;             // ✅ movie passed via Link state
+  const stateMovie = location.state?.movie || null;
 
-  if (!movie) return <p className="muted">Search for a movie to begin.</p>;
+  const [movie, setMovie] = useState(stateMovie);          // show something immediately if passed
+  const [loading, setLoading] = useState(!stateMovie);     // fetch if missing
+  const [error, setError] = useState("");
+
+  const apiKey = import.meta.env.VITE_OMDB_KEY;
+
+  useEffect(() => {
+    const ctrl = new AbortController();
+
+    // Always fetch details by ID so we have full fields (Genre, Rated, Plot, etc.)
+    async function fetchDetails() {
+      try {
+        setLoading(true);
+        setError("");
+
+        if (!apiKey) {
+          setError("Missing OMDb API key (VITE_OMDB_KEY).");
+          setLoading(false);
+          return;
+        }
+
+        const url = `https://www.omdbapi.com/?apikey=${apiKey}&i=${encodeURIComponent(imdbID)}&plot=full`;
+        const res = await fetch(url, { signal: ctrl.signal });
+        if (!res.ok) throw new Error(`Network error (${res.status})`);
+        const data = await res.json();
+
+        if (data.Response === "False") {
+          throw new Error(data.Error || "Movie not found.");
+        }
+
+        // If we had a minimal object from state, merge it with full details (details win)
+        setMovie(prev => ({ ...(prev || {}), ...data }));
+      } catch (err) {
+        if (err.name !== "AbortError") {
+          setError(err.message || "Failed to load movie.");
+        }
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    if (imdbID) fetchDetails();
+
+    return () => ctrl.abort();
+  }, [imdbID, apiKey]);
+
+  // Avoid duplicates in watchlist
+  const inWatchlist = useMemo(
+    () => Array.isArray(watchList) && movie && watchList.some(m => m.imdbID === movie.imdbID),
+    [watchList, movie]
+  );
 
   function addToWatchList() {
-    // avoid duplicates
-    const exists = Array.isArray(watchList) && watchList.some(m => m.imdbID === movie.imdbID);
-    if (!exists) {
-      setWatchList([...(watchList || []), movie]);
-    }
+    if (!movie || inWatchlist) return;
+    setWatchList([...(watchList || []), movie]);
   }
+
+  if (loading) return <p className="muted">Loading…</p>;
+  if (error) return <p className="error">{error}</p>;
+  if (!movie) return <p className="muted">No movie found.</p>;
+
+  const hasPoster = movie.Poster && movie.Poster !== "N/A";
 
   return (
     <div>
       <h1>Description for {imdbID}</h1>
 
       <h2>{movie.Title}</h2>
-      {movie.Poster && <img src={movie.Poster} alt={movie.Title} />}
+      {hasPoster && <img src={movie.Poster} alt={movie.Title} />}
+
       {movie.Genre && <p>{movie.Genre}</p>}
 
       <p>
@@ -38,8 +90,13 @@ export default function Description({ setWatchList, watchList, loading, error })
       {movie.BoxOffice && <p><strong>Earnings:</strong> {movie.BoxOffice}</p>}
       {movie.Plot && <p>{movie.Plot}</p>}
 
-      <button type="button" onClick={addToWatchList}>
-        Add to Watchlist
+      <button
+        type="button"
+        onClick={addToWatchList}
+        disabled={inWatchlist}
+        title={inWatchlist ? "Already in watchlist" : "Add to watchlist"}
+      >
+        {inWatchlist ? "In Watchlist ✓" : "Add to Watchlist"}
       </button>
     </div>
   );
