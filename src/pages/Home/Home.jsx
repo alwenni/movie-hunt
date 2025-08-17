@@ -1,7 +1,7 @@
 // pages/Home/Home.jsx
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import NavBar from "../../components/Nav/Nav";
+// import NavBar from "../../components/Nav/Nav";
 
 export default function Home() {
   const [query, setQuery] = useState("");
@@ -57,7 +57,6 @@ export default function Home() {
 
   return (
     <div>
-      <NavBar />
 
       <h1>Welcome to MovieHunt</h1>
       <p className="read-the-docs">Search any movie title and browse results below.</p>
