@@ -22,7 +22,9 @@
 - CSS 
 - JavaScript 
 
-##Additionals
+## Additionals
+- [Team Trello ](https://trello.com/b/oXOxq0AR/group-3-hackathon)
+- [Figma](https://www.figma.com/design/TzZLVaZDs2xTl7904IWhWM/Untitled?node-id=0-1&t=fO0trudWs2WGJKqO-1)
 
 ## Project Structure
 
@@ -89,29 +91,6 @@ movie-hunt/
 
 
 ### Created by & Team Roles
-
-- **GitHub Manager:**
-   - Husain Alnahash
-
-- **UI Lead:**
-   - Ali Jawad  
-   _Wireframes, CSS styles, accessibility. Owns all CSS files._
-
-- **Layout Lead:**
-   - Mohamed Ali Jaber  
-   _Nav, Footer, 404 Page. Owns App.jsx & Components folder._
-
-- **Page Dev A:**
-   - Mahmood Kadhem  
-   _Builds two pages: Home & About._
-
-- **Page Dev B:**
-   - Husain Folath  
-   _Builds two pages: Description & WatchList._
-
-- **QA / API / Docs:**
-   - Aqeel Muslim  
-   _Testing, README, bug fixes. Owns README & responsible for deciphering API. Handles submission issue in correct template._
 
 - **GitHub Manager:**
    - Husain Alnahash
