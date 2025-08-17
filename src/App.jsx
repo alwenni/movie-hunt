@@ -6,18 +6,22 @@ import WatchList from "./pages/WatchList/WatchList.jsx";
 import About from "./pages/About/About.jsx";
 import { useState } from "react";
 export default function App() {
-  const [watchList, setWatchList] = useState([ ]);
+  const [watchList, setWatchList] = useState([]);
   return (
     <div className="App">
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* pass prop name that WatchList expects */}
         <Route
           path="/watchList"
-          element={<WatchList watchlist={watchList} /* onRemove optional */ />}
+          // 👇 comment goes here, outside of JSX props
+          element={
+            <WatchList
+              watchlist={watchList}
+              setWatchList={setWatchList}   // pass setter down
+            />
+          }
         />
-        {/* keep param name consistent with Description.jsx (imdbID) */}
         <Route
           path="/description/:imdbID"
           element={<Description watchList={watchList} setWatchList={setWatchList} />}
