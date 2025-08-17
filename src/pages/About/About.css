@@ -1,5 +1,4 @@
 /* pages/About/About.css */
-@import url('https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap');
 
 :root{
   --bg: #0D0D0D;
@@ -19,13 +18,11 @@
   width: min(1100px, 92vw);
   margin: 28px auto 64px;
   color: var(--text);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   line-height: 1.65;
 }
 
 .about > h1{
   margin: 0 0 10px;
-  font-family: "Irish Grover", cursive;
   font-size: clamp(32px, 5vw, 48px);
   letter-spacing: .4px;
   color: var(--accent);
@@ -142,4 +139,17 @@
   .about{ margin: 20px auto 48px; }
   .about h2{ font-size: 20px; }
   .about h2 + p, .about h2 + ul, .about footer{ padding: 12px; }
+}
+
+body {
+  padding-top: 70px; 
+}
+h1{
+    width: min(1100px, 92vw);
+  margin: 30px auto 10px;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--accent);
+  text-align: center;
+  letter-spacing: 1px;
 }

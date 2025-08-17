@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  margin-top: 60px;
+  padding: 20px;
+}
+
+/* الجهة اليمنى: العنوان + الصورة */
+.right-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* كل شيء يلتصق لليمين */
+  gap: 16px;
+}
+
+.right-side h2 {
+  font-size: 24px;
+  color: var(--text);
+  margin: 0;
+  text-align: right;
+}
+
+.right-side img {
+  max-width: 280px;
+  border-radius: 8px;
+  border: 2px solid var(--ink);
+}
+
+/* الجهة اليسرى: البيانات */
+.data {
+  flex: 1;
+  padding: 16px 20px;
+  background: var(--surface);
+  border: 1.5px solid var(--ink);
+  border-radius: 14px;
+}
+
+button {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  color: var(--text);
+  font-weight: 600;
+  cursor: pointer;
+}
+button:disabled {
+  background: var(--muted);
+  cursor: not-allowed;
+}

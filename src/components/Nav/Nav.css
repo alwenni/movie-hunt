@@ -63,3 +63,6 @@ body {
     -2px -2px 0 var(--ink),
     0 0 16px rgba(0,0,0,0.55);
 }
+body {
+  padding-top: 70px; 
+}
