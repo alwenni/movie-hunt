@@ -1,6 +1,7 @@
 // pages/Home/Home.jsx
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import "./Home.css";
 // import NavBar from "../../components/Nav/Nav";
 
 export default function Home() {

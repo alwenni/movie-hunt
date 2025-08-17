@@ -1,4 +1,5 @@
 // pages/WatchList/WatchList.jsx
+import "./WatchList.css";
 import { useEffect, useMemo, useState } from "react";
 
 export default function WatchList({ watchlist = [], loading, error, setWatchList }) {

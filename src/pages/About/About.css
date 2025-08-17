@@ -1,0 +1,145 @@
+/* pages/About/About.css */
+@import url('https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap');
+
+:root{
+  --bg: #0D0D0D;
+  --surface: #161616;   
+  --ink: #2A2A2A;       
+  --text: #FFFFFF;
+  --muted: #CFCFCF;
+  --accent: #F5C518;   
+}
+
+
+
+
+
+
+.about{
+  width: min(1100px, 92vw);
+  margin: 28px auto 64px;
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.65;
+}
+
+.about > h1{
+  margin: 0 0 10px;
+  font-family: "Irish Grover", cursive;
+  font-size: clamp(32px, 5vw, 48px);
+  letter-spacing: .4px;
+  color: var(--accent);
+  text-align: center;
+}
+
+.about > p:first-of-type{
+  margin: 0 auto 18px;
+  max-width: 75ch;
+  color: #ECECEC;
+  text-align: center;
+}
+
+.about h2{
+  margin: 26px 0 10px;
+  font-size: 22px;
+  color: var(--accent);
+  position: relative;
+  display: inline-block;
+  padding-bottom: 4px;
+}
+.about h2::after{
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 2px;
+  background: var(--accent);
+  opacity: .85;
+}
+
+.about h2 + p,
+.about h2 + ul{
+  background: var(--surface);
+  border: 1.5px solid var(--ink);
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin: 6px 0 14px;
+}
+
+.about h2 + p{
+  color: #EDEDED;
+  margin-bottom: 0;
+}
+
+.about h2 + ul{
+  list-style: none;       
+  margin: 0;
+  padding: 10px 12px;
+  display: grid;
+  gap: 8px;
+}
+.about h2 + ul > li{
+  position: relative;
+  padding-inline-start: 26px;
+  color: var(--text);
+  font-weight: 600;
+}
+.about h2 + ul > li::before{
+  content: "★";
+  position: absolute;
+  inset-inline-start: 0;
+  color: var(--accent);
+  font-size: 14px;
+  line-height: 1;
+  transform: translateY(2px);
+}
+
+.about a{
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+.about a:hover{
+  text-decoration: underline;
+}
+
+.about footer{
+  margin-top: 22px;
+  background: var(--surface);
+  border: 1.5px solid var(--ink);
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+.about footer h3{
+  margin: 0 0 10px;
+  font-size: 18px;
+  color: var(--accent);
+}
+
+.about footer ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.about footer li{
+  background: #1F1F1F;
+  border: 1px solid var(--ink);
+  border-radius: 10px;
+  padding: 10px 12px;
+  text-align: right;     
+  font-weight: 800;      
+  color: #FFF;
+}
+
+.about p{
+  color: #EDEDED;
+}
+
+/* استجابة */
+@media (max-width: 520px){
+  .about{ margin: 20px auto 48px; }
+  .about h2{ font-size: 20px; }
+  .about h2 + p, .about h2 + ul, .about footer{ padding: 12px; }
+}
