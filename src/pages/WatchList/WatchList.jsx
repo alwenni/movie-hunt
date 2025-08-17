@@ -1,11 +1,15 @@
 // pages/WatchList/WatchList.jsx
-export default function WatchList({ watchlist = [], loading, error, onRemove }) {
+export default function WatchList({ watchlist = [], loading, error, setWatchList }) {
   if (loading) return <p className="muted">Loading…</p>;
   if (error) return <p className="error">{error}</p>;
-
   if (!Array.isArray(watchlist) || watchlist.length === 0) {
     return <p className="muted">Add a movie to the watchlist to begin.</p>;
   }
+
+  // 👇 Local helper in the child that calls the parent's setter
+  const removeMovie = (idOrTitle) => {
+    setWatchList(prev => prev.filter(m => (m.imdbID ?? m.Title) !== idOrTitle));
+  };
 
   return (
     <div className="watchlist">
@@ -20,11 +24,12 @@ export default function WatchList({ watchlist = [], loading, error, onRemove }) 
           </p>
           {movie.imdbRating && <p><strong>IMDb Rating:</strong> {movie.imdbRating}</p>}
 
-          {onRemove && (
-            <button type="button" onClick={() => onRemove(movie.imdbID || movie.Title)}>
-              Remove
-            </button>
-          )}
+          <button
+            type="button"
+            onClick={() => removeMovie(movie.imdbID || movie.Title)}
+          >
+            Remove
+          </button>
         </div>
       ))}
     </div>
