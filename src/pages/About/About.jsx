@@ -26,7 +26,8 @@ export default function About(){
 
       <footer>
         <h3>Created by: </h3>
-        <ul>
+        <div className="names">
+        <ul >
         <li>Mahmood Kadhem</li>
         <li>Husain Alnahash</li>
         <li>Husain Folath</li>
@@ -34,6 +35,7 @@ export default function About(){
         <li>Mohamed Ali Jaber</li>
         <li>Aqeel Muslim</li>
       </ul>
+      </div>
       </footer>
     </div>
   ); }

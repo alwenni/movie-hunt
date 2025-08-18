@@ -43,11 +43,13 @@ button {
   background: var(--accent);
   border: none;
   border-radius: 8px;
-  color: var(--text);
+  color: black;
   font-weight: 600;
   cursor: pointer;
 }
+
 button:disabled {
-  background: var(--muted);
+  background: rgb(148, 148, 148);
   cursor: not-allowed;
+  color: rgb(43, 43, 43);
 }

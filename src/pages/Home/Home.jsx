@@ -59,18 +59,25 @@ export default function Home() {
   return (
     <div>
 
-      <h1>Welcome to MovieHunt</h1>
+      <h1 class="Welcome-Msg">Welcome to MovieHunt</h1>
       <p className="read-the-docs">Search any movie title and browse results below.</p>
 
       <form onSubmit={handleSubmit}>
+        <div   className="input-container">
+
         <input
           type="search"
           placeholder="Search movies…"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           aria-label="Search movies"
+        
         />
+        </div>
+        <div>
+
         <button type="submit">Search</button>
+        </div>
       </form>
 
       {loading && <p className="muted">Loading…</p>}
@@ -111,7 +118,7 @@ export default function Home() {
                 Prev
               </button>
               <span>
-                Page {page} of {totalPages}
+                 Page {page} of {totalPages} 
               </span>
               <button
                 disabled={page >= totalPages}

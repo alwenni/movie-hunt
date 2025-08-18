@@ -2,7 +2,7 @@
   width: min(1100px, 92vw);
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: clamp(18px, 3vw, 28px);
+  gap: clamp(18px, 3vw, 50px);
   margin-top: 8px;
 }
 
@@ -12,9 +12,11 @@
   gap: 10px;
   text-decoration: none;
   color: #fff;
-  background: transparent;
+  background: rgba(61, 61, 61, 0.4);
+  border-radius: 20px;
   transition: transform .12s ease;
 }
+
 .grid-card:hover{ transform: translateY(-3px); }
 
 .thumb{
@@ -43,44 +45,73 @@
   color: #9a9a9a;
   font-weight: 700;
 }
+
 form {
-  
-display: flex;
-  align-items: center;
+ display: flex;
+  align-items: center; /* Aligns the items vertically */
   gap: 8px;
+  justify-content: center;
+  max-width: 500px;
+  margin: 10px auto 50px;
+  /* background: #1c1c1c;
+  padding: 8px 12px;
+  border-radius: 40px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+  width: min(500px, 90vw);*/
+}
+
+.input-container {
+  flex: 1;
+  justify-content: flex-end;
+  display: flex;
+  align-items: center; /* Aligns the items vertically */
+  gap: 8px;
+  height: 40px;
   background: #1c1c1c;
   padding: 8px 12px;
   border-radius: 40px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.35);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+  /* width: min(100px, 60vw); */
+  max-width: 400px; 
+  margin: 30px auto;
+}
 
-  width: min(500px, 90vw);
-
-  margin: 0 auto; 
+.button-container {
+  flex-shrink: 0;
 }
 
 form input[type="search"] {
-  flex: 1;
+width: 100%; /* Ensures the input fills its container */
   border: none;
   outline: none;
   background: transparent;
   padding: 10px 14px;
   font-size: 16px;
   font-weight: 500;
-  color: #000;
+  color: #ffffff;
   font-family: "Poppins", sans-serif;
 }
 
 form input::placeholder {
   color: #aaa;
-  display: flex;
   font-weight: 400;
-  align-items: center;
 }
 
-
+form button {
+padding: 10px 20px;
+  background-color: #F5C518; /* Yellow button color */
+  height: 45px;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  margin-left: 4px;
+}
 
 form button::before {
-  content: "🔍";
+  content: "🔍 ";
   font-size: 18px;
   
 }
@@ -111,6 +142,7 @@ form button:hover {
 body {
   padding-top: 70px; 
 }
+
 h1{
   width: min(1100px, 92vw);
   margin: 30px auto 10px;
@@ -121,3 +153,23 @@ h1{
   letter-spacing: 1px;
 }
 
+.pager{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.pager button{
+  color: black;
+  margin-left: 14px;
+  margin-right: 14px;
+}
+
+.Welcome-Msg{
+  margin: 60px auto 10px;
+  font-size: 48px;
+}
+
+.meta{
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
